@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic 3D Perspective Tilt</title>
+  <style>
+    #case-studies {
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    background: rgb(185,201,225);
+    background: linear-gradient(180deg, rgba(185,201,225,1) 0%, rgba(240,244,244,1) 130%);
+}
+
+.case-container {
+    max-width: 96%;
+    display: flex;
+    margin: 0 auto;
+    gap: 4em;
+  
+  /*ADDS PERSPECTIVE TO DIV*/
+   perspective: 1000px; /* Gives depth to the 3D effect */
+}
+
+.flex-child {
+    width: 33.333%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.case-image {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+  
+  /*ADDED TRANSITIONS*/
+  transition: transform 0.2s ease-out;
+  transform-style: preserve-3d; /* Needed if you have child elements inside that also move */
+  will-change: transform; /* Optimizes rendering performance */
+}
+
+.case-image img {
+    width: 100%;
+    display: block;
+    transform: scale(1);
+    transition: all .2s .025s ease;
+}
+
+.case-overlay {
+    position: absolute;
+    display:block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    background: #0867ff no-repeat center 20%;
+    background-size:50px 50px;
+    opacity:0;
+    transition: all .2s .0s ease;
+}
+
+.overlay-text {
+    display:block;
+    padding:0 40px;
+    position:absolute;
+    top:40%;
+    left:0;
+    width:100%;
+    text-align: center;
+    box-sizing:border-box;
+    font-size: 28px;
+    line-height: 38px;
+    font-family: "thermal-variable", sans-serif;
+    font-variation-settings: "opsz" 500, "wght" 500; 
+    color: #E9EF00;
+    opacity:0;
+    transform:translateY(-20px);
+    transition: all .2s .025s ease;
+}
+
+.case-image:hover .overlay-text {
+    transform:translateY(0);
+    opacity: 1;
+}
+
+.case-descript {
+        width: 100%;
+        background-color: rgba(185,201,225,1);
+}
+
+.case-text {
+    padding: 1.2em;
+    margin: auto;
+    position: relative;
+}
+
+.case-text h3 {
+    margin-top: .3em;
+    padding-bottom: 1em;
+}
+
+.case-divider {
+    border-top: 1.2px solid #0867ff;
+    position: relative;
+    padding-bottom: .4em;
+}
+
+.case-link {
+    font-size: 1.5em;
+}
+
+.case-link a {
+    text-align: left;
+    transition: all .15s cubic-bezier(0.5, 0.5, 0.4, 1.2);   
+    color: #0867ff; 
+    background-color: transparent;
+    /* CSS trick: the margin-top attribute below allows these links to remain at equal positions, regardless of div contents */ 
+    margin-top: auto;
+}
+
+@media (max-width: 1600px) {  
+    .case-text h3 {
+        height: 90px;
+    }
+}
+    
+@media (max-width: 1200px) {    
+    .case-text {
+        width: 100%;
+        text-align: center;
+        margin-top: 2em;
+        margin-bottom: 1em;
+        padding: 0;
+        background-color: rgba(185,201,225,1);
+    }
+    
+    .case-text h3 {
+        height: auto;
+    }
+    
+    .case-divider {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .case-link a {
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        margin: 120px;
+        background-color: #0867ff;
+        color: #f0f4f4;
+    }
+    
+    .overlay-text {
+        text-align: center;
+        font-size: 36px;
+    }
+}
+
+.case-link span { 
+    transition: 0.12s ease;
+    display: inline-block;
+    padding-left: 0;
+}
+
+.case-link:hover {
+    color: #2B303A;
+}
+
+.case-link:hover span {
+    padding-left: 1em;
+}
+
+span.subtext {
+    color: #f0f4f4;
+    font-family: "paralucent-condensed", sans-serif;
+    font-weight: 400;
+    font-size: 26px; 
+}
+  </style>
+</head>
+<body>
+
+  <section id="case-studies">   
+    <div class="case-container">
+        
+        <div class="flex-child">
+             <div class=case-image>
+                <a href="snowleague.html">      
+                    <img src="https://images.unsplash.com/photo-1794113965915-c6fc21ae3963?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="the Snow League project image">
+                    <span class="case-overlay"></span>
+                        <span class="overlay-text">The Snow League<br>
+                            <span class="subtext">View Case Study</span>
+                        </span>
+                 </a>    
+            </div> 
+            
+            <div class="case-descript">
+            <div class="case-text">
+                <div class="client-title"><h4>The Snow League</h4></div>
+                    <h3>The Motion Behind a Fresh Direction for Action Sports</h3>
+                    <div class="case-divider"></div>
+                    <a href="snowleague.html" class="case-link">Motion System Case Study <span>&#8594;</span></a>            
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex-child">
+            <div class=case-image>
+                <a href="khimera.html"> 
+                    <img src="https://images.unsplash.com/photo-1794113965915-c6fc21ae3963?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Khimera brand film project image">
+                    <span class="case-overlay"></span>
+                        <span class="overlay-text">Khimera<br>
+                            <span class="subtext">View Case Study</span>
+                        </span>  
+                </a>    
+            </div>   
+            <div class="case-descript">
+                <div class="case-text">
+                    <div class="client-title"><h4>Khimera</h4></div>
+                    <h3>A Bold Brand Announcement Driven by Thoughtful Design</h3>  
+                    <div class="case-divider"></div>
+                    <a href="winterlights.html" class="case-link">Brand Film Case Study <span>&#8594;</span></a>    
+                </div> 
+            </div>    
+        </div>
+        
+        <div class="flex-child">
+             <div class=case-image>
+                <a href="longislandsound.html"> 
+                    <img src="https://images.unsplash.com/photo-1794113965915-c6fc21ae3963?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="the Long Island Sound Project project image">
+                    <span class="case-overlay"></span>
+                        <span class="overlay-text">Long Island Sound Program<br>
+                            <span class="subtext">View Case Study</span>
+                        </span>
+                </a>    
+            </div> 
+            
+            <div class="case-descript">
+                <div class="case-text">
+                    <div class="client-title"><h4>Long Island Sound Program</h4></div>
+                    <h3>Communicating Water Quality Challenges in the Sound</h3>  
+                    <div class="case-divider"></div>
+                     <a href="leaf.html" class="case-link">Animation Case Study <span>&#8594;</span></a>  
+                </div>
+            </div>    
+        </div>
+        
+    </div>
+
+    </section>    
+
+  <script>
+document.querySelectorAll('.case-image').forEach(image => {
+  image.addEventListener('mousemove', (e) => {
+    const rect = image.getBoundingClientRect();
+    
+    // Calculate mouse position relative to the element (0 to width/height)
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Normalize coordinates so the center of the image is (0,0)
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Calculate distance from center (-1 to 1)
+    const percentX = (x - centerX) / centerX;
+    const percentY = (y - centerY) / centerY;
+    
+    // Set maximum rotation degrees (adjust for subtleness)
+    const maxRotation = 12; 
+    
+    // Calculate rotation values
+    // Moving mouse right (positive percentX) rotates around Y axis positively
+    // Moving mouse down (positive percentY) rotates around X axis negatively
+    const rotateX = -percentY * maxRotation;
+    const rotateY = percentX * maxRotation;
+    
+    // Apply the 3D rotation transform
+    image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.06)`;
+  });
+
+  // Reset the image position when the mouse leaves
+  image.addEventListener('mouseleave', () => {
+    image.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+  });
+});
+
+  </script>
+
+</body>
+</html>
